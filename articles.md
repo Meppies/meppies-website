@@ -1,17 +1,22 @@
 ---
-layout: default
-title: Meppies Blog
+layout: page
+title: Writing
+description: All posts on meppie.eu — EUC, Infrastructure as Code, DevOps, automation and the occasional side project.
+permalink: /articles/
 ---
 
-<div id="articles">
-  <h1>Articles</h1>
-  <ul class="posts noList">
-    {%- for post in site.posts -%}
-      <li>
-      	<span class="date">{{ post.date | date_to_string }}</span>
-      	<h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      	<p class="description">{%- if post.description -%}{{ post.description  | strip_html | strip_newlines | truncate: 120 }}{%- else -%}{{ post.content | strip_html | strip_newlines | truncate: 120 }}{%- endif -%}</p>
-      </li>
-    {%- endfor -%}
-  </ul>
+Every post, newest first. Grouped by year.
+
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+<div class="archive-list">
+{% for year in posts_by_year %}
+  <h2 class="display display-sm" style="margin-top: 48px; border-bottom: 1px solid var(--border); padding-bottom: 8px;">{{ year.name }}</h2>
+  {% for post in year.items %}
+    <a href="{{ post.url | relative_url }}" class="archive-item">
+      <h3>{{ post.title }}</h3>
+      <span class="date">{{ post.date | date: '%d %b' }}</span>
+    </a>
+  {% endfor %}
+{% endfor %}
 </div>

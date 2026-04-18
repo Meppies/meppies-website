@@ -1,36 +1,119 @@
 ---
 layout: default
-title: Meppies Blog
+title: Meppie
 ---
 
-<div class="home" id="home">
-	<h1 class="pageTitle">Recent Posts</h1>
-	<div class="posts noList">
-		{%- for post in paginator.posts -%}
-		<article>
-			<span class="date">{{ post.date | date: '%B %d, %Y' }}</span>
-			<h3>
-				<a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-			</h3>
-			<p>
-				{%- if post.description -%}{{ post.description }}{%- else -%}{{
-				post.excerpt | strip_html }}{%- endif -%}
-			</p>
-		</article>
-		{%- endfor -%}
-	</div>
-	<!-- Pagination links -->
-	<div class="pagination">
-		{%- if paginator.previous_page -%}
-		<a
-			href="{{ paginator.previous_page_path | relative_url }}"
-			class="previous button__outline"
-			>Newer Posts</a
-		>
-		{%- endif -%} {%- if paginator.next_page -%}
-		<a href="{{ paginator.next_page_path | relative_url }}" class="next button__outline"
-			>Older Posts</a
-		>
-		{%- endif -%}
-	</div>
-</div>
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="container hero-inner">
+    <span class="eyebrow"><span class="pulse"></span> Writing on EUC · IaC · DevOps</span>
+    <h1 class="display">
+      A way automation<br />
+      <em class="gradient">can help you.</em>
+    </h1>
+    <p class="lede">
+      Notes from the intersection of End User Computing, Infrastructure as Code and DevOps. Written by {{ site.author.name }} — engineer, Home Assistant tinkerer, and tireless believer that if a human does it twice it belongs in code.
+    </p>
+    <div class="hero-cta">
+      <a href="{{ '/articles' | relative_url }}" class="btn btn-solid">Latest writing</a>
+      <a href="{{ '/about' | relative_url }}" class="btn btn-outline">About me</a>
+    </div>
+
+    <dl class="fact-strip">
+      <div><dt>Focus</dt><dd>EUC · IaC · DevOps</dd></div>
+      <div><dt>Stack</dt><dd>Ansible · Python · Pipelines</dd></div>
+      <div><dt>Platform</dt><dd>Citrix · Windows · Linux</dd></div>
+      <div><dt>Hobby</dt><dd>Home Assistant</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="writing" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow-small">01 · Writing</span>
+        <h2 class="display display-sm">Recent notes</h2>
+      </div>
+      <a href="{{ '/articles' | relative_url }}" class="link-accent">View all →</a>
+    </div>
+
+    <div class="cards">
+      {% for post in paginator.posts %}
+        <a href="{{ post.url | relative_url }}" class="card">
+          {% if post.categories.first %}<span class="tag">{{ post.categories.first | capitalize }}</span>{% endif %}
+          <h3>{{ post.title }}</h3>
+          <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncate: 140 }}{% endif %}</p>
+          <div class="card-meta">
+            <span>{{ post.date | date: '%-d %B %Y' }}</span>
+            {% if post.read_time %}<span>·</span><span>{{ post.read_time }} min read</span>{% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+
+    {% if paginator.total_pages > 1 %}
+      <div class="hero-cta" style="margin-top: 40px; justify-content: center;">
+        {% if paginator.previous_page %}
+          <a class="btn btn-outline" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
+        {% endif %}
+        {% if paginator.next_page %}
+          <a class="btn btn-outline" href="{{ paginator.next_page_path | relative_url }}">Older →</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<section id="projects" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow-small">02 · Projects</span>
+        <h2 class="display display-sm">Things I've built</h2>
+      </div>
+      <a href="https://github.com/{{ site.social.github }}" class="link-accent">GitHub ↗</a>
+    </div>
+
+    <div class="cards">
+      <a href="https://github.com/Meppies/fun-things-to-share" class="card project-card">
+        <div class="card-head">
+          <span class="project-type">Home Assistant integration</span>
+          <span class="status status-live">Live</span>
+        </div>
+        <h3>ns-reisadvies</h3>
+        <p>Dutch train travel advisor, written for Home Assistant in JavaScript and Python.</p>
+        <div class="stack"><span>JavaScript</span><span>Python</span><span>Home Assistant</span></div>
+      </a>
+      <a href="https://github.com/Meppies/develop-standards-starter" class="card project-card">
+        <div class="card-head">
+          <span class="project-type">Developer tool · open source</span>
+          <span class="status status-live">Live</span>
+        </div>
+        <h3>dev-standards-mcp</h3>
+        <p>An MCP-connected shared knowledge base of engineering standards — so every developer's AI writes code your team's way from the first session.</p>
+        <div class="stack"><span>MCP</span><span>Claude</span><span>Markdown</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="container about-grid">
+    <div class="about-left">
+      <span class="eyebrow-small eyebrow-light">03 · About</span>
+      <h2 class="display display-sm about-title">Making enterprise EUC feel like a product.</h2>
+      <p class="about-meta">{{ site.author.name }} · Lead Infrastructure Engineer · {{ site.author.location }}</p>
+    </div>
+    <div class="about-right">
+      <p>I'm a Lead Infrastructure Engineer focused on End User Computing, Infrastructure as Code and DevOps at enterprise scale. My days look like Ansible roles, pipelines, Citrix WEM and the occasional deep dive into why a session is slow. The goal is a platform that runs itself and an application team that doesn't need to file a ticket to ship.</p>
+      <p>At home I'm a Home Assistant hobbyist and open-source tinkerer. I build custom integrations in Python and JavaScript, including <em class="gradient-text">ns-reisadvies</em> — a Dutch train travel advisor that runs on my own network. I write here when something from the day job is worth sharing.</p>
+      <div class="social-pills">
+        <a href="https://github.com/{{ site.social.github }}" class="pill pill-solid">GitHub</a>
+        <a href="https://linkedin.com/in/{{ site.social.linkedin }}" class="pill pill-ghost">LinkedIn</a>
+        <a href="https://bsky.app/profile/{{ site.social.bluesky }}" class="pill pill-ghost">Bluesky</a>
+        <a href="https://youtube.com/@{{ site.social.youtube }}" class="pill pill-ghost">YouTube</a>
+      </div>
+    </div>
+  </div>
+</section>
