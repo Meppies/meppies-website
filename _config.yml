@@ -1,40 +1,51 @@
-title: Meppies Blog
-description: This is Meppies blog, where I share knowledge that I see in my work.
-
+title: Meppie
+tagline: A way automation can help you
+description: >-
+  Writing on End User Computing, Infrastructure as Code and DevOps.
+  Notes, projects, and occasional deep dives by Jeroen Meppelink.
 url: https://meppie.eu
-# Only necessary when hosting your site in a sub-directory. Project sites hosted on GitHub Pages are the common use-case of this variable.
-baseurl: # Ex: /project-page
-paginate_path: "blog/page:num/"
-permalink: blog/:title/
+baseurl: ""
 
-# Header Option
-header: large
+author:
+  name: Jeroen Meppelink
+  bio: Lead Infrastructure Engineer — EUC, IaC, DevOps.
+  location: Hilversum, NL
+  avatar: /assets/img/jeroen.jpg
 
-sass:
-    style: compressed
+permalink: /blog/:title/
+paginate: 8
+paginate_path: "/blog/page:num/"
 
 markdown: kramdown
 highlighter: rouge
-plugins: [jekyll-paginate]
-paginate: 5
+sass:
+  style: compressed
+
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
 
 navigation:
-    - title: Home
-      url: /index.html
-    - title: About
-      url: /about    
-    - title: Articles
-      url: /articles
+  - title: Writing
+    url: /articles
+  - title: Projects
+    url: /projects
+  - title: About
+    url: /about
 
 social:
-    github: Meppies
-    twitter: crasymeppie
-    email: meppies@meppies.nl
-    linkedin: jeroenmeppelink
-    youtube: TheMeppies
-    bluesky: meppe.link
+  github: Meppies
+  linkedin: jeroenmeppelink
+  bluesky: meppe.link
+  youtube: TheMeppies
+  rss: /feed.xml
 
-google_analytics: 
-
-disqus:
-    shortname: Meppie
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
