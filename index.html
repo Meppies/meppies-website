@@ -3,116 +3,131 @@ layout: default
 title: Meppie
 ---
 
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="container hero-inner">
-    <span class="eyebrow"><span class="pulse"></span> Writing on EUC · IaC · DevOps</span>
-    <h1 class="display">
-      A way automation<br />
-      <em class="gradient">can help you.</em>
-    </h1>
-    <p class="lede">
-      Notes from the intersection of End User Computing, Infrastructure as Code and DevOps. Written by {{ site.author.name }} — engineer, Home Assistant tinkerer, and tireless believer that if a human does it twice it belongs in code.
-    </p>
-    <div class="hero-cta">
-      <a href="{{ '/articles' | relative_url }}" class="btn btn-solid">Latest writing</a>
-      <a href="{{ '/about' | relative_url }}" class="btn btn-outline">About me</a>
+<section class="night">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow"><span class="ok" aria-hidden="true">✓</span>Writing on EUC · IaC · DevOps</div>
+      <h1 class="display">A way automation can help you<span class="dot">.</span></h1>
+      <p class="lede">Notes from where End User Computing, Infrastructure as Code and DevOps meet. Written by {{ site.author.name }}: engineer, Home Assistant tinkerer, and firm believer that if a human does it twice, it belongs in code.</p>
+      <div class="btn-row">
+        <a href="#writing" class="btn btn-primary">Latest writing</a>
+        <a href="#about" class="btn btn-ghost">About me</a>
+      </div>
     </div>
-
-    <dl class="fact-strip">
+    <div class="hero-logo">
+      <img src="{{ '/assets/img/meppie-logo.svg' | relative_url }}" alt="Meppie logo: a leaping kangaroo, a giraffe and an aeroplane in front of a setting sun" width="340" height="340" />
+    </div>
+  </div>
+  <div class="wrap">
+    <dl class="facts">
       <div><dt>Focus</dt><dd>EUC · IaC · DevOps</dd></div>
       <div><dt>Stack</dt><dd>Ansible · Python · Pipelines</dd></div>
       <div><dt>Platform</dt><dd>Citrix · Windows · Linux</dd></div>
       <div><dt>Hobby</dt><dd>Home Assistant</dd></div>
     </dl>
   </div>
+  <div class="horizon" aria-hidden="true"><span></span><span></span><span></span></div>
 </section>
 
-<section id="writing" class="section">
-  <div class="container">
+<section id="writing" class="day section">
+  <div class="wrap section-inner">
     <div class="section-head">
       <div>
-        <span class="eyebrow-small">01 · Writing</span>
-        <h2 class="display display-sm">Recent notes</h2>
+        <div class="label">01 / Writing</div>
+        <h2 class="h2">Recent notes</h2>
       </div>
-      <a href="{{ '/articles' | relative_url }}" class="link-accent">View all →</a>
+      <a href="{{ '/articles' | relative_url }}" class="more">All writing →</a>
     </div>
 
     <div class="cards">
-      {% for post in paginator.posts %}
+      {% for post in paginator.posts limit: 6 %}
+        {% assign cat = post.categories.first %}
         <a href="{{ post.url | relative_url }}" class="card">
-          {% if post.categories.first %}<span class="tag">{{ post.categories.first | capitalize }}</span>{% endif %}
-          <h3>{{ post.title }}</h3>
-          <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncate: 140 }}{% endif %}</p>
-          <div class="card-meta">
-            <span>{{ post.date | date: '%-d %B %Y' }}</span>
-            {% if post.read_time %}<span>·</span><span>{{ post.read_time }} min read</span>{% endif %}
-          </div>
+          <span class="card-meta">{% if cat %}{{ cat | slice: 0 | upcase }}{{ cat | slice: 1, 100 }} · {% endif %}{{ post.date | date: '%-d %B %Y' }}</span>
+          <h3 class="card-title">{{ post.title }}</h3>
+          <p class="card-text">{% if post.description %}{{ post.description | truncate: 150 }}{% else %}{{ post.excerpt | strip_html | truncate: 150 }}{% endif %}</p>
         </a>
       {% endfor %}
     </div>
 
     {% if paginator.total_pages > 1 %}
-      <div class="hero-cta" style="margin-top: 40px; justify-content: center;">
-        {% if paginator.previous_page %}
-          <a class="btn btn-outline" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
-        {% endif %}
-        {% if paginator.next_page %}
-          <a class="btn btn-outline" href="{{ paginator.next_page_path | relative_url }}">Older →</a>
-        {% endif %}
+      <div class="pager">
+        {% if paginator.previous_page %}<a class="btn" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>{% endif %}
+        {% if paginator.next_page %}<a class="btn" href="{{ paginator.next_page_path | relative_url }}">Older →</a>{% endif %}
       </div>
     {% endif %}
   </div>
 </section>
 
-<section id="projects" class="section section-alt">
-  <div class="container">
+<section id="speaking" class="night section">
+  <div class="wrap split">
+    <div class="split-side">
+      <div class="label">02 / Speaking</div>
+      <h2 class="h2">On stage<span class="dot">.</span></h2>
+      <p>Talks about running Citrix as code: built from scratch, kept in shape every day, never patched by hand.</p>
+    </div>
+    <div class="split-main">
+      <div class="talk">
+        <div class="talk-body">
+          <span class="talk-title">IaC for on-premises CVAD: build it, shape it, keep it running</span>
+          <span class="talk-meta">E2E EUCDEX.Ai Malta · Valletta · 16 to 18 October 2026 · 45 minutes</span>
+          <a class="talk-link" href="https://e2emvc.com/">e2emvc.com ↗</a>
+        </div>
+        <span class="status status-ok">✓ Speaking</span>
+      </div>
+      <div class="footnote">Eight E2EVC editions attended since Berlin 2022.</div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="day section">
+  <div class="wrap section-inner">
     <div class="section-head">
       <div>
-        <span class="eyebrow-small">02 · Projects</span>
-        <h2 class="display display-sm">Things I've built</h2>
+        <div class="label">03 / Projects</div>
+        <h2 class="h2">Things I've built</h2>
       </div>
-      <a href="https://github.com/{{ site.social.github }}" class="link-accent">GitHub ↗</a>
+      <a href="https://github.com/{{ site.social.github }}" class="more">GitHub ↗</a>
     </div>
-
     <div class="cards">
-      <a href="https://github.com/Meppies/fun-things-to-share" class="card project-card">
-        <div class="card-head">
-          <span class="project-type">Home Assistant integration</span>
-          <span class="status status-live">Live</span>
-        </div>
-        <h3>ns-reisadvies</h3>
-        <p>Dutch train travel advisor, written for Home Assistant in JavaScript and Python.</p>
-        <div class="stack"><span>JavaScript</span><span>Python</span><span>Home Assistant</span></div>
+      <a href="https://github.com/Meppies/ha-ns-reisadvies" class="card card-night">
+        <span class="card-head"><span>Home Assistant integration</span><span class="ok">✓ Live</span></span>
+        <h3 class="card-title">ns-reisadvies</h3>
+        <p class="card-text">Dutch train travel advice inside Home Assistant: departures, delays and a live map, on the Platinum quality scale.</p>
+        <span class="stack">Python · JavaScript · HACS</span>
       </a>
-      <a href="https://github.com/Meppies/develop-standards-starter" class="card project-card">
-        <div class="card-head">
-          <span class="project-type">Developer tool · open source</span>
-          <span class="status status-live">Live</span>
-        </div>
-        <h3>dev-standards-mcp</h3>
-        <p>An MCP-connected shared knowledge base of engineering standards — so every developer's AI writes code your team's way from the first session.</p>
-        <div class="stack"><span>MCP</span><span>Claude</span><span>Markdown</span></div>
+      <a href="https://github.com/Meppies/develop-standards-starter" class="card card-night">
+        <span class="card-head"><span>Developer tool · open source</span><span class="ok">✓ Live</span></span>
+        <h3 class="card-title">dev-standards-mcp</h3>
+        <p class="card-text">A shared knowledge base of engineering standards, so every developer's AI writes code your team's way from the first session.</p>
+        <span class="stack">MCP · Claude · Markdown</span>
+      </a>
+      <a href="{% post_url 2026-05-17-hyperdeck-copy-tool %}" class="card card-night">
+        <span class="card-head"><span>macOS app</span><span class="ok">✓ Live</span></span>
+        <h3 class="card-title">HyperDeck Copy Tool</h3>
+        <p class="card-text">Copies clips from up to nine HyperDeck recorders to a NAS in parallel, while they are still recording.</p>
+        <span class="stack">Python · PyQt6 · MXF</span>
       </a>
     </div>
   </div>
 </section>
 
-<section id="about" class="about">
-  <div class="container about-grid">
-    <div class="about-left">
-      <span class="eyebrow-small eyebrow-light">03 · About</span>
-      <h2 class="display display-sm about-title">Making enterprise EUC feel like a product.</h2>
-      <p class="about-meta">{{ site.author.name }} · Lead Infrastructure Engineer · {{ site.author.location }}</p>
+<section id="about" class="night">
+  <div class="wrap about-inner">
+    <div class="portrait">
+      <img class="photo" src="{{ '/assets/img/jeroen-portrait.jpg' | relative_url }}" alt="Jeroen Meppelink in Hiroshima" width="280" height="280" />
+      <img class="badge" src="{{ '/assets/img/meppie-logo.svg' | relative_url }}" alt="" width="88" height="88" />
     </div>
-    <div class="about-right">
-      <p>I'm a Lead Infrastructure Engineer focused on End User Computing, Infrastructure as Code and DevOps at enterprise scale. My days look like Ansible roles, pipelines, Citrix WEM and the occasional deep dive into why a session is slow. The goal is a platform that runs itself and an application team that doesn't need to file a ticket to ship.</p>
-      <p>At home I'm a Home Assistant hobbyist and open-source tinkerer. I build custom integrations in Python and JavaScript, including <em class="gradient-text">ns-reisadvies</em> — a Dutch train travel advisor that runs on my own network. I write here when something from the day job is worth sharing.</p>
-      <div class="social-pills">
-        <a href="https://github.com/{{ site.social.github }}" class="pill pill-solid">GitHub</a>
-        <a href="https://linkedin.com/in/{{ site.social.linkedin }}" class="pill pill-ghost">LinkedIn</a>
-        <a href="https://bsky.app/profile/{{ site.social.bluesky }}" class="pill pill-ghost">Bluesky</a>
-        <a href="https://youtube.com/@{{ site.social.youtube }}" class="pill pill-ghost">YouTube</a>
+    <div class="about-text">
+      <div class="label">04 / About</div>
+      <h2 class="h2">Making enterprise EUC feel like a product<span class="dot">.</span></h2>
+      <p>I'm a lead infrastructure engineer focused on End User Computing, Infrastructure as Code and DevOps at enterprise scale. My days are Ansible roles, pipelines, Citrix WEM and the occasional deep dive into why a session is slow. The goal is a platform that runs itself, and application teams that don't need to file a ticket to ship.</p>
+      <div class="slogan"><p>Forward only. Rebuild, don't roll back.</p></div>
+      <div class="btn-row">
+        <a href="https://github.com/{{ site.social.github }}" class="pill btn-light">GitHub</a>
+        <a href="https://linkedin.com/in/{{ site.social.linkedin }}" class="pill btn-ghost">LinkedIn</a>
+        <a href="https://bsky.app/profile/{{ site.social.bluesky }}" class="pill btn-ghost">Bluesky</a>
+        <a href="https://youtube.com/@{{ site.social.youtube }}" class="pill btn-ghost">YouTube</a>
       </div>
     </div>
   </div>

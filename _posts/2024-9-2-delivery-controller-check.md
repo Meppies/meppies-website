@@ -2,7 +2,7 @@
 layout: post
 title: Check Delivery controller state in an Ansible Library
 Date: 2024-09-12
-categories: [ Anisble, Powershell, Citrix, CVAD]
+categories: [ Ansible, Powershell, Citrix, CVAD]
 thumbnail: "assets/images/database_upgrade.png"
 description: This library assists in assessing the health status of a Citrix Delivery Controller.
 ---

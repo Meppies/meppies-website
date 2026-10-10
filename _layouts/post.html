@@ -1,20 +1,37 @@
 ---
 layout: default
 ---
-<article class="post">
-  <span class="eyebrow-small">{% if page.categories.first %}{{ page.categories.first | capitalize }}{% else %}Writing{% endif %}</span>
-  <h1>{{ page.title }}</h1>
-  <div class="post-meta">
-    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%-d %B %Y' }}</time>
-    {% if page.read_time %} · {{ page.read_time }} min read{% endif %}
+{% assign words = content | number_of_words %}
+{% assign minutes = words | divided_by: 220 | plus: 1 %}
+<article>
+  <header class="night">
+    <div class="page-head-inner">
+      <div class="label">{% if page.categories.size > 0 %}{% for c in page.categories limit: 2 %}{{ c | slice: 0 | upcase }}{{ c | slice: 1, 100 }}{% unless forloop.last %} · {% endunless %}{% endfor %}{% else %}Writing{% endif %}</div>
+      <h1 class="page-title">{{ page.title }}</h1>
+      {% if page.description %}<p class="page-lede">{{ page.description }}</p>{% endif %}
+      <div class="byline">
+        <span class="author"><img src="{{ '/assets/img/jeroen-portrait.jpg' | relative_url }}" alt="" width="36" height="36" />{{ site.author.name }}</span>
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%-d %B %Y' }}</time>
+        <span>{% if page.read_time %}{{ page.read_time }}{% else %}{{ minutes }}{% endif %} min read</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="prose">
+    {{ content }}
+    {% if page.tags.size > 0 %}
+    <div class="tags">{% for tag in page.tags %}<span>{{ tag }}</span>{% endfor %}</div>
+    {% endif %}
   </div>
-
-  {{ content }}
-
-  <hr style="margin: 64px 0 32px; border: 0; border-top: 1px solid var(--border);" />
-  <p style="color: var(--fg-muted); font-size: 14px;">
-    Thanks for reading. If you want more of this, follow along on
-    <a href="https://github.com/{{ site.social.github }}">GitHub</a> or
-    grab the <a href="/feed.xml">RSS feed</a>.
-  </p>
 </article>
+
+<aside class="author-card" aria-label="About the author">
+  <div class="author-card-inner">
+    <img src="{{ '/assets/img/jeroen-portrait.jpg' | relative_url }}" alt="Jeroen Meppelink" width="96" height="96" />
+    <div class="author-card-text">
+      <strong>{{ site.author.name }}</strong>
+      <span>Lead infrastructure engineer. Forward only. Rebuild, don't roll back.</span>
+    </div>
+    <a href="{{ '/articles' | relative_url }}" class="btn btn-primary">More writing</a>
+  </div>
+</aside>

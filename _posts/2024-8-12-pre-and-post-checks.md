@@ -2,7 +2,7 @@
 layout: post
 title: Pre and post checks for CVAD
 Date: 2024-08-12
-categories: [ Anisble, Powershell, Citrix, CVAD]
+categories: [ Ansible, Powershell, Citrix, CVAD]
 thumbnail: "assets/images/database_upgrade.png"
 description: To ensure server readiness for checks or installations, it's essential to verify its health status. To facilitate this, I've implemented several checks to assess server health. 
 ---

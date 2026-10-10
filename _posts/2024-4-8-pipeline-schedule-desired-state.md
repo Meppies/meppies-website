@@ -2,7 +2,7 @@
 layout: post
 title: Pipeline schedule for Citrix desired state configuration
 Date: 2024-04-08
-categories: [Citrix, CVAD, Anisble, Azure Devops, Pipeline, Desired state]
+categories: [Citrix, CVAD, Ansible, Azure Devops, Pipeline, Desired state]
 thumbnail: "assets/images/database_upgrade.png"
 description: To ensure consistent and predictable Citrix configurations, frequent pipeline execution is crucial. This helps maintain the desired state of the environment. However, due to Azure DevOps scheduling limitations, a custom script was developed to circumvent these restrictions and enable more flexible automation.
 ---

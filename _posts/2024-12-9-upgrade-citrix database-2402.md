@@ -2,7 +2,7 @@
 layout: post
 title: Upgrade Citrix CVAD 2402 LTSR Database with Ansible code
 Date: 2024-12-09
-categories: [Citrix, CVAD, Anisble, Powershell]
+categories: [Citrix, CVAD, Ansible, Powershell]
 thumbnail: "assets/images/database_upgrade.png"
 description: Citrix Virtual Apps and Desktops (CVAD) 2402 LTSR introduced modifications to the database upgrade process.
 ---

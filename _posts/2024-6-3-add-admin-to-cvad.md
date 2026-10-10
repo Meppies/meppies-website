@@ -2,7 +2,7 @@
 layout: post
 title: Add admin to CVAD in an Ansible Library
 Date: 2024-06-03
-categories: [ Anisble, Powershell, Citrix, CVAD]
+categories: [ Ansible, Powershell, Citrix, CVAD]
 thumbnail: "assets/images/database_upgrade.png"
 description: To streamline the management of administrators and groups within Citrix Virtual Apps and Desktops (CVAD), I developed a library that automates the process of adding or removing users and groups.
 ---

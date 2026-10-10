@@ -3,9 +3,9 @@ layout: page
 title: Projects
 description: Side projects and open-source work — developer tools, MCP servers and Home Assistant integrations.
 permalink: /projects/
+label: 03 / Projects
+lede: Things I've built. Some are live and in daily use; others are very much work in progress.
 ---
-
-A living list of things I'm building. Some are live and in daily use; others are very much work in progress.
 
 ## Live
 
@@ -21,7 +21,7 @@ Longer write-up: [From second brain to team brain](/blog/from-second-brain-to-te
 ### ns-reisadvies
 **Home Assistant integration · JavaScript + Python**
 
-A Dutch train travel advisor that runs inside Home Assistant. Shows upcoming departures, delays and disruptions for any route, surfaced in Lovelace cards and automations. Source: [github.com/Meppies/fun-things-to-share](https://github.com/Meppies/fun-things-to-share).
+A Dutch train travel advisor that runs inside Home Assistant. Shows upcoming departures, delays and disruptions for any route, surfaced in Lovelace cards and automations. Source: [github.com/Meppies/ha-ns-reisadvies](https://github.com/Meppies/ha-ns-reisadvies).
 
 ---
 

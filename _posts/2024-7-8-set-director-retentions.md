@@ -2,7 +2,7 @@
 layout: post
 title: Set Director retention in an Ansible Library
 Date: 2024-07-08
-categories: [ Anisble, Powershell, Citrix, CVAD]
+categories: [ Ansible, Powershell, Citrix, CVAD]
 thumbnail: "assets/images/database_upgrade.png"
 description: To streamline the process of modifying log data retention settings in Citrix Director, I developed a library that simplifies the configuration changes.
 ---

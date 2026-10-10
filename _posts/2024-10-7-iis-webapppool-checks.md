@@ -2,7 +2,7 @@
 layout: post
 title: Check IIS Web App Pool state in an Ansible Library
 Date: 2024-10-07
-categories: [ Anisble, Powershell, Citrix, CVAD]
+categories: [ Ansible, Powershell, Citrix, CVAD]
 thumbnail: "assets/images/database_upgrade.png"
 description: This library assists in assessing the health status of a IIS Web App Pools.
 ---

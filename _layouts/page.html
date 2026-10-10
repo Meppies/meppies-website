@@ -1,9 +1,14 @@
 ---
 layout: default
 ---
-<article class="post">
-  {% if page.title %}
-    <h1>{{ page.title }}</h1>
-  {% endif %}
+<header class="night">
+  <div class="page-head-inner">
+    {% if page.label %}<div class="label">{{ page.label }}</div>{% endif %}
+    <h1 class="page-title">{{ page.title }}<span class="dot">.</span></h1>
+    {% if page.lede %}<p class="page-lede">{{ page.lede }}</p>{% endif %}
+  </div>
+</header>
+<article class="prose">
   {{ content }}
 </article>
+<div style="height: 64px;"></div>

@@ -2,7 +2,7 @@
 layout: post
 title: Pipeline send an email when stages failed
 Date: 2024-05-13
-categories: [ Anisble, Powershell, Azure Devops, Pipeline]
+categories: [ Ansible, Powershell, Azure Devops, Pipeline]
 thumbnail: "assets/images/database_upgrade.png"
 description: To ensure timely notification of pipeline failures in Azure DevOps, email notifications have been configured. This allows for immediate awareness of issues, even when the pipeline is scheduled to run automatically.
 ---

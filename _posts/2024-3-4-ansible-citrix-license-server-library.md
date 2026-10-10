@@ -2,7 +2,7 @@
 layout: post
 title: Ansible Citrix License server admins library
 Date: 2024-03-04
-categories: [Citrix, CVAD, Anisble, Powershell, License server]
+categories: [Citrix, CVAD, Ansible, Powershell, License server]
 thumbnail: "assets/images/database_upgrade.png"
 description: To streamline Citrix license server administration, I developed a reusable Ansible library that simplifies common tasks and enhances automation capabilities.
 ---

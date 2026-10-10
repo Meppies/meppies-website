@@ -1,6 +1,7 @@
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <span>© {{ site.time | date: '%Y' }} {{ site.author.name }}</span>
+  <div class="wrap footer-inner">
+    <span class="who"><img src="{{ '/assets/img/meppie-mark.svg' | relative_url }}" alt="" width="28" height="28" />© {{ site.time | date: '%Y' }} {{ site.author.name }}</span>
     <span class="mono">Built with Jekyll · hosted on GitHub Pages</span>
   </div>
+  <div class="horizon horizon-sm" aria-hidden="true"><span></span><span></span><span></span></div>
 </footer>
